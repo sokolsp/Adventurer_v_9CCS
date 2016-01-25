@@ -118,7 +118,7 @@ void Adafruit_SSD1306::begin(uint8_t vccstate, uint8_t i2caddr) {
     // Init sequence for 128x64 OLED module
     ssd1306_command(SSD1306_DISPLAYOFF);                    // 0xAE
     ssd1306_command(SSD1306_SETDISPLAYCLOCKDIV);            // 0xD5
-    ssd1306_command(0x80);                                  // the suggested ratio 0x80
+    ssd1306_command(0xE0);                                  // the suggested ratio 0xF0
     ssd1306_command(SSD1306_SETMULTIPLEX);                  // 0xA8
     ssd1306_command(0x3F);
     ssd1306_command(SSD1306_SETDISPLAYOFFSET);              // 0xD3
