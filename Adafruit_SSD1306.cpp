@@ -358,7 +358,7 @@ void Adafruit_SSD1306::drawChar(int16_t x, int16_t y, unsigned char c,
   }
 }
 
-// Draw a character
+// Draw a big character
 void Adafruit_SSD1306::drawBigChar(int16_t x, int16_t y, unsigned char c,
 			    uint16_t color, uint16_t bg) {
 
@@ -384,6 +384,34 @@ void Adafruit_SSD1306::drawBigChar(int16_t x, int16_t y, unsigned char c,
     }
   }
 }
+
+// Draw a giant character
+void Adafruit_SSD1306::drawGiantChar(int16_t x, int16_t y, unsigned char c,
+			    uint16_t color, uint16_t bg) {
+
+  if((x >= _width)            || // Clip right
+     (y >= _height)           || // Clip bottom
+     ((x + 22) < 0) 	  	  || // Clip left
+     ((y + 30) < 0))             // Clip top
+    return;
+
+  for (int8_t i=0; i<24; i++ ) {
+    uint32_t line;
+    if (i >= 20)
+      line = 0x0;
+    else
+      line = giant_font[(c*20)+i];
+    for (int8_t j = 0; j<32; j++) {
+      if (line & 0x1) {
+          drawPixel(x+i, y+j, color);
+      } else if (bg != color) {
+          drawPixel(x+i, y+j, bg);
+      }
+      line >>= 1;
+    }
+  }
+}
+
 
 void Adafruit_SSD1306::write(char *c) {
   for (uint8_t i = 0; i < strlen(c); i ++)
@@ -422,11 +450,85 @@ void Adafruit_SSD1306::writeBig(char *c) {
       index = 14;
     else if (c[i] == '-')
       index = 15;
+    else if (c[i] == 'D')
+      index = 16;
+    else if (c[i] == 'n')
+      index = 17;
+    else if (c[i] == 'p')
+      index = 18;
+    else if (c[i] == 'u')
+      index = 19;
+    else if (c[i] == 'S')
+      index = 20;
+    else if (c[i] == ' ')
+      index = 21;
+    else if (c[i] == 'M')
+      index = 22;
+    else if (c[i] == 'T')
+      index = 23;
+    else if (c[i] == 'W')
+      index = 24;
+    else if (c[i] == 'J')
+      index = 25;
+    else if (c[i] == 'A')
+      index = 26;
+    else if (c[i] == 'O')
+      index = 27;
+    else if (c[i] == 'N')
+      index = 28;
+    else if (c[i] == 'o')
+      index = 29;
+    else if (c[i] == 'e')
+      index = 30;
+    else if (c[i] == 'd')
+      index = 31;
+    else if (c[i] == 'r')
+      index = 32;
+    else if (c[i] == 'a')
+      index = 33;
+    else if (c[i] == 'y')
+      index = 34;
+    else if (c[i] == 'g')
+      index = 35;
+    else if (c[i] == 'i')
+      index = 36;
+    else if (c[i] == 'b')
+      index = 37;
+    else if (c[i] == 'l')
+      index = 38;
+    else if (c[i] == 'c')
+      index = 39;
+    else if (c[i] == 'h')
+      index = 40;
+    else if (c[i] == 'f')
+      index = 41;
+    else if (c[i] == 'v')
+      index = 42;
+    else if (c[i] == ':')
+      index = 43;
     drawBigChar(cursor_x, cursor_y, index, textcolor, textbgcolor);
     cursor_x += 12;
     if (wrap && (cursor_x > (_width - 12)))
     {
         cursor_y += 16;
+        cursor_x = 0;
+    }
+  }
+}
+
+void Adafruit_SSD1306::writeGiant(char *c) {
+  uint8_t index;
+  for (uint8_t i = 0; i < strlen(c); i ++)
+  {
+    if ((c[i] >= '0')&&(c[i] <= '9'))
+      index = c[i] - 0x30;
+    else if (c[i] == ':')
+      index = 10;
+    drawGiantChar(cursor_x, cursor_y, index, textcolor, textbgcolor);
+    cursor_x += 24;
+    if (wrap && (cursor_x > (_width - 24)))
+    {
+        cursor_y += 32;
         cursor_x = 0;
     }
   }
