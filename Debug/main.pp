@@ -14,6 +14,8 @@ main.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdint.h
 main.obj: G:/Prog/MSP430/Adventurer_v_9CCS/MS5803.h
 main.obj: G:/Prog/MSP430/Adventurer_v_9CCS/FXOS8700CQ.h
 main.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/inttypes.h
+main.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdio.h
+main.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdarg.h
 
 G:/Prog/MSP430/Adventurer_v_9CCS/main.cpp: 
 C:/ti/ccsv6/ccs_base/msp430/include/msp430.h: 
@@ -29,3 +31,5 @@ C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdint.h:
 G:/Prog/MSP430/Adventurer_v_9CCS/MS5803.h: 
 G:/Prog/MSP430/Adventurer_v_9CCS/FXOS8700CQ.h: 
 C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/inttypes.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdio.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdarg.h: 
