@@ -16,6 +16,9 @@ FXOS8700CQ.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsic
 FXOS8700CQ.obj: ../FXOS8700CQ.h
 FXOS8700CQ.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/inttypes.h
 FXOS8700CQ.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdint.h
+FXOS8700CQ.obj: ../general.h
+FXOS8700CQ.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdlib.h
+FXOS8700CQ.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/string.h
 
 ../FXOS8700CQ.cpp: 
 C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/math.h: 
@@ -33,3 +36,6 @@ C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/intrinsics_legacy_undefs.
 ../FXOS8700CQ.h: 
 C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/inttypes.h: 
 C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdint.h: 
+../general.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/stdlib.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include/string.h: 

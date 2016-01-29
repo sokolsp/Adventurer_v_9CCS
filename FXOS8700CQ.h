@@ -178,7 +178,7 @@ class FXOS8700CQ
 	uint8_t accelODR;
 	uint8_t magOSR;
 
-	FXOS8700CQ(uint8_t addr);
+	FXOS8700CQ(uint8_t addr, uint8_t RSPORT, uint8_t RSPIN);
 
 	// Register functions
 	void writeReg(uint8_t reg, uint8_t value);
@@ -204,6 +204,11 @@ class FXOS8700CQ
 	private:
 	// Sensor address
 	uint8_t address;
+	volatile uint8_t * _RSTPORTDIR;	// was uint16_t but got error with new IDE-0009
+	volatile uint8_t * _RSTPORTREN;	// was uint16_t but got error with new IDE-0009
+	volatile uint8_t * _RSTPORTIN;	// was uint16_t but got error with new IDE-0009
+	volatile uint8_t * _RSTPORTOUT;	// was uint16_t but got error with new IDE-0009
+	uint8_t _RSTPORTPIN;
 };
 
 #endif

@@ -1,17 +1,26 @@
 #include <math.h>
 #include <msp430.h>
 #include "FXOS8700CQ.h"
+#include "general.h"
 
 uint8_t c;
 
 // Public Methods //////////////////////////////////////////////////////////////
 
-FXOS8700CQ::FXOS8700CQ(uint8_t addr)
+FXOS8700CQ::FXOS8700CQ(uint8_t addr, uint8_t RSTPORT, uint8_t RSTPIN)
 {
 	address = addr;
 	accelFSR = AFS_2g;     // Set the scale below either 2, 4 or 8
 	accelODR = AODR_12_5HZ; // In hybrid mode, accel/mag data sample rates are half of this value
 	magOSR = MOSR_6;     // Choose magnetometer oversample rate
+	_RSTPORTPIN = 1<<RSTPIN;
+	_RSTPORTDIR = portDirRegister(RSTPORT);
+	_RSTPORTREN = portRenRegister(RSTPORT);
+	_RSTPORTIN  = portInputRegister(RSTPORT);
+	_RSTPORTOUT = portOutputRegister(RSTPORT);
+	*_RSTPORTDIR |= _RSTPORTPIN;
+	*_RSTPORTOUT &= ~_RSTPORTPIN;
+	*_RSTPORTREN &= ~_RSTPORTPIN;
 }
 
 // Writes a register
@@ -123,12 +132,16 @@ void FXOS8700CQ::active()
 void FXOS8700CQ::reset_offset()
 {
 	c = readReg(FXOS8700CQ_M_CTRL_REG2);
-	writeReg(FXOS8700CQ_CTRL_REG2, c | 0x04);
+	writeReg(FXOS8700CQ_M_CTRL_REG2, c | 0x04);
 }
 
 
 void FXOS8700CQ::init()
 {
+	*_RSTPORTOUT |= _RSTPORTPIN;
+	__delay_cycles(80000);
+	*_RSTPORTOUT &= ~_RSTPORTPIN;
+
 	standby();  // Must be in standby to change registers
 
 	// Configure the accelerometer

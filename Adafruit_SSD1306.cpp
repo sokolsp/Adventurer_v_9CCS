@@ -524,6 +524,8 @@ void Adafruit_SSD1306::writeGiant(char *c) {
       index = c[i] - 0x30;
     else if (c[i] == ':')
       index = 10;
+    else if (c[i] == ' ')
+      index = 11;
     drawGiantChar(cursor_x, cursor_y, index, textcolor, textbgcolor);
     cursor_x += 24;
     if (wrap && (cursor_x > (_width - 24)))
