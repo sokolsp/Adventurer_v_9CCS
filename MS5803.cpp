@@ -115,7 +115,7 @@ void MS5803::adjustAltitude(int32_t adj_ref) {
 
 	ref_pres = adj_ref;
 	press = ((((uint64_t)(D1 * sensitivity) >> 21) - sensorOffset) >> 15)/10;
-	temp = (2000 + ((deltaTemp * sensorCoefficients[6] ) >> 23));
+	temp = (2000 + (int32_t)((deltaTemp * (uint64_t)sensorCoefficients[6] ) >> 23));
 	alt = ((ref_pres - press) * (160000 + (temp * 1600) / 273)) / (ref_pres + press);
 }
 

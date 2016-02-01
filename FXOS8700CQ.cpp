@@ -18,9 +18,9 @@ FXOS8700CQ::FXOS8700CQ(uint8_t addr, uint8_t RSTPORT, uint8_t RSTPIN)
 	_RSTPORTREN = portRenRegister(RSTPORT);
 	_RSTPORTIN  = portInputRegister(RSTPORT);
 	_RSTPORTOUT = portOutputRegister(RSTPORT);
-	*_RSTPORTDIR |= _RSTPORTPIN;
+/*	*_RSTPORTDIR |= _RSTPORTPIN;
 	*_RSTPORTOUT &= ~_RSTPORTPIN;
-	*_RSTPORTREN &= ~_RSTPORTPIN;
+	*_RSTPORTREN &= ~_RSTPORTPIN;*/
 }
 
 // Writes a register
@@ -138,9 +138,9 @@ void FXOS8700CQ::reset_offset()
 
 void FXOS8700CQ::init()
 {
-	*_RSTPORTOUT |= _RSTPORTPIN;
+/*	*_RSTPORTOUT |= _RSTPORTPIN;
 	__delay_cycles(80000);
-	*_RSTPORTOUT &= ~_RSTPORTPIN;
+	*_RSTPORTOUT &= ~_RSTPORTPIN;*/
 
 	standby();  // Must be in standby to change registers
 
