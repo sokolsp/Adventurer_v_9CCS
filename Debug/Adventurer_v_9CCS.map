@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.5                      
 ******************************************************************************
->> Linked Wed Feb 10 21:48:19 2016
+>> Linked Wed Mar 09 19:46:53 2016
 
 OUTPUT FILE NAME:   <Adventurer_v_9CCS.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 000047a8
+ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 00004848
 
 
 MEMORY CONFIGURATION
@@ -18,8 +18,8 @@ MEMORY CONFIGURATION
   INFOC                 00001880   00000080  00000000  00000080  RWIX
   INFOB                 00001900   00000080  00000000  00000080  RWIX
   INFOA                 00001980   00000080  00000000  00000080  RWIX
-  RAM                   00001c00   00000800  0000016b  00000695  RWIX
-  FRAM                  00004400   0000a000  00001372  00008c8e  RWIX
+  RAM                   00001c00   00000800  0000016c  00000694  RWIX
+  FRAM                  00004400   0000a000  00001412  00008bee  RWIX
   FRAM_VARS             0000e400   00000100  00000006  000000fa  RWIX
   FRAM_PRESSURE         0000e500   00000b40  00000b40  00000000  RWIX
   FRAM_TEMPERATURE      0000f040   00000b40  00000b40  00000000  RWIX
@@ -83,7 +83,7 @@ MEMORY CONFIGURATION
   INT53                 0000fffa   00000002  00000002  00000000  RWIX
   INT54                 0000fffc   00000002  00000002  00000000  RWIX
   RESET                 0000fffe   00000002  00000002  00000000  RWIX
-  FRAM2                 00010000   00004000  00003b82  0000047e  RWIX
+  FRAM2                 00010000   00004000  00003b8e  00000472  RWIX
 
 
 SECTION ALLOCATION MAP
@@ -91,7 +91,7 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.bss       0    00001c00    000000a8     UNINITIALIZED
+.bss       0    00001c00    000000a9     UNINITIALIZED
                   00001c00    00000044     main.obj (.bss)
                   00001c44    00000014     (.common:rx_buffer)
                   00001c58    00000010     (.common:sensorCoefficients)
@@ -128,10 +128,11 @@ section   page    origin      length       input sections
                   00001ca5    00000001     (.common:screen)
                   00001ca6    00000001     (.common:skip)
                   00001ca7    00000001     (.common:units)
+                  00001ca8    00000001     (.common:values_transmitted)
 
-.data      0    00001ca8    00000023     UNINITIALIZED
-                  00001ca8    0000001c     MS5803.obj (.data)
-                  00001cc4    00000007     main.obj (.data:str)
+.data      0    00001caa    00000023     UNINITIALIZED
+                  00001caa    0000001c     MS5803.obj (.data)
+                  00001cc6    00000007     main.obj (.data:str)
 
 .stack     0    00002360    000000a0     UNINITIALIZED
                   00002360    00000004     rts430x_lc_rd_eabi.lib : boot.obj (.stack)
@@ -145,13 +146,13 @@ section   page    origin      length       input sections
 .sysmem    0    00004400    00000000     UNINITIALIZED
 
 .text:_isr 
-*          0    00004400    000003d6     
-                  00004400    00000286     main.obj (.text:_isr:_Z11USCI_A0_ISRv)
-                  00004686    000000b2     main.obj (.text:_isr:_Z9PORT1_ISRv)
-                  00004738    00000070     main.obj (.text:_isr:_Z10TIMER1_ISRv)
-                  000047a8    0000001a     rts430x_lc_rd_eabi.lib : boot_special.obj (.text:_isr:_c_int00_noargs_noexit)
-                  000047c2    0000000e     main.obj (.text:_isr:_Z10TIMER0_ISRv)
-                  000047d0    00000006     rts430x_lc_rd_eabi.lib : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    00004400    00000476     
+                  00004400    00000326     main.obj (.text:_isr:_Z11USCI_A0_ISRv)
+                  00004726    000000b2     main.obj (.text:_isr:_Z9PORT1_ISRv)
+                  000047d8    00000070     main.obj (.text:_isr:_Z10TIMER1_ISRv)
+                  00004848    0000001a     rts430x_lc_rd_eabi.lib : boot_special.obj (.text:_isr:_c_int00_noargs_noexit)
+                  00004862    0000000e     main.obj (.text:_isr:_Z10TIMER0_ISRv)
+                  00004870    00000006     rts430x_lc_rd_eabi.lib : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
 
 .ipestruct 
 *          0    00004400    00000000     UNINITIALIZED
@@ -165,29 +166,29 @@ section   page    origin      length       input sections
 *          0    00004400    00000000     UNINITIALIZED
 
 .init_array 
-*          0    000047d6    00000004     
-                  000047d6    00000004     main.obj (.init_array)
+*          0    00004876    00000004     
+                  00004876    00000004     main.obj (.init_array)
 
-.cinit     0    00005746    0000002c     
-                  00005746    0000000c     (__TI_handler_table)
-                  00005752    00000009     (.cinit..data.load) [load image, compression = rle]
-                  0000575b    00000001     --HOLE-- [fill = 0]
-                  0000575c    00000006     (.cinit..bss.load) [load image, compression = zero_init]
-                  00005762    00000010     (__TI_cinit_table)
+.cinit     0    000057e6    0000002c     
+                  000057e6    0000000c     (__TI_handler_table)
+                  000057f2    00000009     (.cinit..data.load) [load image, compression = rle]
+                  000057fb    00000001     --HOLE-- [fill = 0]
+                  000057fc    00000006     (.cinit..bss.load) [load image, compression = zero_init]
+                  00005802    00000010     (__TI_cinit_table)
 
-.const     0    000047da    00000f6c     
-                  000047da    000004fb     Adafruit_SSD1306.obj (.const:.string:font)
-                  00004cd5    00000001     --HOLE-- [fill = 0]
-                  00004cd6    000003c0     Adafruit_SSD1306.obj (.const:giant_font)
-                  00005096    00000370     Adafruit_SSD1306.obj (.const:big_font)
-                  00005406    0000020e     main.obj (.const:.string)
-                  00005614    000000b6     main.obj (.const:atan_values)
-                  000056ca    0000005b     main.obj (.const:.string:sin_values)
-                  00005725    00000001     --HOLE-- [fill = 0]
-                  00005726    00000008     FXOS8700CQ.obj (.const:port_to_dir)
-                  0000572e    00000008     FXOS8700CQ.obj (.const:port_to_input)
-                  00005736    00000008     FXOS8700CQ.obj (.const:port_to_output)
-                  0000573e    00000008     FXOS8700CQ.obj (.const:port_to_ren)
+.const     0    0000487a    00000f6c     
+                  0000487a    000004fb     Adafruit_SSD1306.obj (.const:.string:font)
+                  00004d75    00000001     --HOLE-- [fill = 0]
+                  00004d76    000003c0     Adafruit_SSD1306.obj (.const:giant_font)
+                  00005136    00000370     Adafruit_SSD1306.obj (.const:big_font)
+                  000054a6    0000020e     main.obj (.const:.string)
+                  000056b4    000000b6     main.obj (.const:atan_values)
+                  0000576a    0000005b     main.obj (.const:.string:sin_values)
+                  000057c5    00000001     --HOLE-- [fill = 0]
+                  000057c6    00000008     FXOS8700CQ.obj (.const:port_to_dir)
+                  000057ce    00000008     FXOS8700CQ.obj (.const:port_to_input)
+                  000057d6    00000008     FXOS8700CQ.obj (.const:port_to_output)
+                  000057de    00000008     FXOS8700CQ.obj (.const:port_to_ren)
 
 .fram_vars 
 *          0    0000e400    00000006     UNINITIALIZED
@@ -299,99 +300,99 @@ SYSNMI     0    0000fffc    00000002
 .reset     0    0000fffe    00000002     
                   0000fffe    00000002     rts430x_lc_rd_eabi.lib : boot.obj (.reset)
 
-.text      0    00010000    00003b82     
-                  00010000    00001238     main.obj (.text:_Z11show_screenv)
-                  00011238    0000039a     rts430x_lc_rd_eabi.lib : div64u.obj (.text:__mspabi_divull)
-                  000115d2    0000035c     main.obj (.text:_Z9calibratev)
-                  0001192e    000002ec     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068writeBigEPc)
-                  00011c1a    000002d6     main.obj (.text:_Z5spliti)
-                  00011ef0    0000021e     MS5803.obj (.text:_ZN6MS580310readSensorEv)
-                  0001210e    00000216     main.obj (.text:_Z4initv)
-                  00012324    000001c2     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612fillTriangleEiiiiiij)
-                  000124e6    00000166     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065beginEhh)
-                  0001264c    00000132     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068drawCharEiihjjh)
-                  0001277e    00000124     MS5803.obj (.text:_ZN6MS580312ms5803CmdAdcEh)
-                  000128a2    0000010e     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130610drawCircleEiiij)
-                  000129b0    00000100     MS5803.obj (.text:_ZN6MS580314adjustAltitudeEl)
-                  00012ab0    000000ca     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13069drawPixelEiij)
-                  00012b7a    000000c2     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawGiantCharEiihjj)
-                  00012c3c    000000b8     main.obj (.text:_Z13compass_resetv)
-                  00012cf4    000000b8     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068drawLineEiiiij)
-                  00012dac    000000b4     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611drawBigCharEiihjj)
-                  00012e60    000000b4     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065writeEPc)
-                  00012f14    000000ac     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130610writeGiantEPc)
-                  00012fc0    00000094     main.obj (.text:_Z11read_sensorv)
-                  00013054    00000078     MS5803.obj (.text:_ZN6MS580321ms5803ReadCoefficientEh)
-                  000130cc    00000072     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13067displayEv)
-                  0001313e    0000006e     MS5803.obj (.text:_ZN6MS580310ms5803CRC4EPj)
-                  000131ac    0000006c     rts430x_lc_rd_eabi.lib : autoinit_wdt.obj (.text:_auto_init_hold_wdt)
-                  00013218    00000068                            : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  00013280    00000066     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQC1Ehhh)
-                  000132e6    00000064     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ8readRegsEhhPh)
-                  0001334a    00000060     main.obj (.text:_Z3sini)
-                  000133aa    0000005e     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ4initEv)
-                  00013408    0000005a     rts430x_lc_rd_eabi.lib : mult64_f5hw.obj (.text:__mpyll)
-                  00013462    00000058                            : div32u.obj (.text)
-                  000134ba    00000056     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ13readAccelDataEv)
-                  00013510    00000052     main.obj (.text:_Z12check_buttonv)
-                  00013562    00000052     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ11readMagDataEv)
-                  000135b4    00000050     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ7readRegEh)
-                  00013604    0000004c     main.obj (.text:_Z4atanl)
-                  00013650    00000040     MS5803.obj (.text:_ZN6MS580316initializeSensorEv)
-                  00013690    00000040     rts430x_lc_rd_eabi.lib : div32s.obj (.text)
-                  000136d0    0000003e                            : lsl32.obj (.text:l_lsl_const)
-                  0001370e    0000003a                            : lsl64.obj (.text:__mspabi_sllll)
-                  00013748    0000003a                            : lsr64.obj (.text:__mspabi_srlll)
-                  00013782    00000038     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130615ssd1306_commandEh)
-                  000137ba    00000038     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068fillRectEiiiij)
-                  000137f2    00000036     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ8writeRegEhh)
-                  00013828    00000036     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD1306C1Eii)
-                  0001385e    00000036     MS5803.obj (.text:_ZN6MS580311resetSensorEv)
-                  00013894    00000034     main.obj (.text:_Z3cosi)
-                  000138c8    00000034     main.obj (.text:_Z8sendDataPc)
-                  000138fc    0000002e     main.obj (.text:__sti___8_main_cpp_display)
-                  0001392a    0000002c     rts430x_lc_rd_eabi.lib : div16s.obj (.text)
-                  00013956    0000002a                            : mult3264_f5hw.obj (.text:__mpysll)
-                  00013980    00000024                            : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
-                  000139a4    00000022                            : mult32_f5hw.obj (.text)
-                  000139c6    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ12reset_offsetEv)
-                  000139e6    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ6activeEv)
-                  00013a06    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ7standbyEv)
-                  00013a26    00000020     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawFastVLineEiiij)
-                  00013a46    00000020     main.obj (.text:main)
-                  00013a66    0000001e     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawFastHLineEiiij)
-                  00013a84    00000018     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065sleepEh)
-                  00013a9c    00000016     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612clearDisplayEv)
-                  00013ab2    00000016     rts430x_lc_rd_eabi.lib : div16u.obj (.text)
-                  00013ac8    00000016                            : mult16_f5hw.obj (.text)
-                  00013ade    00000014                            : memcpy.obj (.text:memcpy)
-                  00013af2    00000012                            : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  00013b04    00000010                            : lsr32.obj (.text:l_lsr)
-                  00013b14    0000000e                            : strlen.obj (.text:strlen)
-                  00013b22    0000000c     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611setTextSizeEh)
-                  00013b2e    0000000c     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612setTextColorEj)
-                  00013b3a    0000000a     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13069setCursorEii)
-                  00013b44    0000000a     MS5803.obj (.text:_ZN6MS5803C1Ev)
-                  00013b4e    0000000a     rts430x_lc_rd_eabi.lib : abs.obj (.text:abs)
-                  00013b58    0000000a                            : lsl16.obj (.text)
-                  00013b62    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611getRotationEv)
-                  00013b68    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065widthEv)
-                  00013b6e    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13066heightEv)
-                  00013b74    00000006     rts430x_lc_rd_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  00013b7a    00000004                            : pre_init.obj (.text:_system_pre_init)
-                  00013b7e    00000004                            : exit.obj (.text:abort)
+.text      0    00010000    00003b8e     
+                  00010000    00001244     main.obj (.text:_Z11show_screenv)
+                  00011244    0000039a     rts430x_lc_rd_eabi.lib : div64u.obj (.text:__mspabi_divull)
+                  000115de    0000035c     main.obj (.text:_Z9calibratev)
+                  0001193a    000002ec     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068writeBigEPc)
+                  00011c26    000002d6     main.obj (.text:_Z5spliti)
+                  00011efc    0000021e     MS5803.obj (.text:_ZN6MS580310readSensorEv)
+                  0001211a    00000216     main.obj (.text:_Z4initv)
+                  00012330    000001c2     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612fillTriangleEiiiiiij)
+                  000124f2    00000166     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065beginEhh)
+                  00012658    00000132     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068drawCharEiihjjh)
+                  0001278a    00000124     MS5803.obj (.text:_ZN6MS580312ms5803CmdAdcEh)
+                  000128ae    0000010e     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130610drawCircleEiiij)
+                  000129bc    00000100     MS5803.obj (.text:_ZN6MS580314adjustAltitudeEl)
+                  00012abc    000000ca     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13069drawPixelEiij)
+                  00012b86    000000c2     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawGiantCharEiihjj)
+                  00012c48    000000b8     main.obj (.text:_Z13compass_resetv)
+                  00012d00    000000b8     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068drawLineEiiiij)
+                  00012db8    000000b4     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611drawBigCharEiihjj)
+                  00012e6c    000000b4     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065writeEPc)
+                  00012f20    000000ac     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130610writeGiantEPc)
+                  00012fcc    00000094     main.obj (.text:_Z11read_sensorv)
+                  00013060    00000078     MS5803.obj (.text:_ZN6MS580321ms5803ReadCoefficientEh)
+                  000130d8    00000072     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13067displayEv)
+                  0001314a    0000006e     MS5803.obj (.text:_ZN6MS580310ms5803CRC4EPj)
+                  000131b8    0000006c     rts430x_lc_rd_eabi.lib : autoinit_wdt.obj (.text:_auto_init_hold_wdt)
+                  00013224    00000068                            : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0001328c    00000066     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQC1Ehhh)
+                  000132f2    00000064     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ8readRegsEhhPh)
+                  00013356    00000060     main.obj (.text:_Z3sini)
+                  000133b6    0000005e     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ4initEv)
+                  00013414    0000005a     rts430x_lc_rd_eabi.lib : mult64_f5hw.obj (.text:__mpyll)
+                  0001346e    00000058                            : div32u.obj (.text)
+                  000134c6    00000056     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ13readAccelDataEv)
+                  0001351c    00000052     main.obj (.text:_Z12check_buttonv)
+                  0001356e    00000052     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ11readMagDataEv)
+                  000135c0    00000050     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ7readRegEh)
+                  00013610    0000004c     main.obj (.text:_Z4atanl)
+                  0001365c    00000040     MS5803.obj (.text:_ZN6MS580316initializeSensorEv)
+                  0001369c    00000040     rts430x_lc_rd_eabi.lib : div32s.obj (.text)
+                  000136dc    0000003e                            : lsl32.obj (.text:l_lsl_const)
+                  0001371a    0000003a                            : lsl64.obj (.text:__mspabi_sllll)
+                  00013754    0000003a                            : lsr64.obj (.text:__mspabi_srlll)
+                  0001378e    00000038     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130615ssd1306_commandEh)
+                  000137c6    00000038     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13068fillRectEiiiij)
+                  000137fe    00000036     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ8writeRegEhh)
+                  00013834    00000036     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD1306C1Eii)
+                  0001386a    00000036     MS5803.obj (.text:_ZN6MS580311resetSensorEv)
+                  000138a0    00000034     main.obj (.text:_Z3cosi)
+                  000138d4    00000034     main.obj (.text:_Z8sendDataPc)
+                  00013908    0000002e     main.obj (.text:__sti___8_main_cpp_display)
+                  00013936    0000002c     rts430x_lc_rd_eabi.lib : div16s.obj (.text)
+                  00013962    0000002a                            : mult3264_f5hw.obj (.text:__mpysll)
+                  0001398c    00000024                            : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
+                  000139b0    00000022                            : mult32_f5hw.obj (.text)
+                  000139d2    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ12reset_offsetEv)
+                  000139f2    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ6activeEv)
+                  00013a12    00000020     FXOS8700CQ.obj (.text:_ZN10FXOS8700CQ7standbyEv)
+                  00013a32    00000020     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawFastVLineEiiij)
+                  00013a52    00000020     main.obj (.text:main)
+                  00013a72    0000001e     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130613drawFastHLineEiiij)
+                  00013a90    00000018     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065sleepEh)
+                  00013aa8    00000016     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612clearDisplayEv)
+                  00013abe    00000016     rts430x_lc_rd_eabi.lib : div16u.obj (.text)
+                  00013ad4    00000016                            : mult16_f5hw.obj (.text)
+                  00013aea    00000014                            : memcpy.obj (.text:memcpy)
+                  00013afe    00000012                            : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  00013b10    00000010                            : lsr32.obj (.text:l_lsr)
+                  00013b20    0000000e                            : strlen.obj (.text:strlen)
+                  00013b2e    0000000c     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611setTextSizeEh)
+                  00013b3a    0000000c     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130612setTextColorEj)
+                  00013b46    0000000a     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13069setCursorEii)
+                  00013b50    0000000a     MS5803.obj (.text:_ZN6MS5803C1Ev)
+                  00013b5a    0000000a     rts430x_lc_rd_eabi.lib : abs.obj (.text:abs)
+                  00013b64    0000000a                            : lsl16.obj (.text)
+                  00013b6e    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD130611getRotationEv)
+                  00013b74    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13065widthEv)
+                  00013b7a    00000006     Adafruit_SSD1306.obj (.text:_ZN16Adafruit_SSD13066heightEv)
+                  00013b80    00000006     rts430x_lc_rd_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  00013b86    00000004                            : pre_init.obj (.text:_system_pre_init)
+                  00013b8a    00000004                            : exit.obj (.text:abort)
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00005762 records: 2, size/record: 8, table size: 16
-	.data: load addr=00005752, load size=00000009 bytes, run addr=00001ca8, run size=00000023 bytes, compression=rle
-	.bss: load addr=0000575c, load size=00000006 bytes, run addr=00001c00, run size=000000a8 bytes, compression=zero_init
+__TI_cinit_table @ 00005802 records: 2, size/record: 8, table size: 16
+	.data: load addr=000057f2, load size=00000009 bytes, run addr=00001caa, run size=00000023 bytes, compression=rle
+	.bss: load addr=000057fc, load size=00000006 bytes, run addr=00001c00, run size=000000a9 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00005746 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000057e6 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_rle24
 	index: 2, handler: __TI_decompress_none
@@ -634,7 +635,7 @@ address   name
 00000872  ADC12MEM9_L                                
 000004be  BCD2BIN                                    
 000004bc  BIN2BCD                                    
-00013b7e  C$$EXIT                                    
+00013b8a  C$$EXIT                                    
 0000043e  CAPTIO0CTL                                 
 0000043f  CAPTIO0CTL_H                               
 0000043e  CAPTIO0CTL_L                               
@@ -1176,78 +1177,78 @@ address   name
 0000015c  WDTCTL                                     
 0000015d  WDTCTL_H                                   
 0000015c  WDTCTL_L                                   
-000047c2  _Z10TIMER0_ISRv                            
-00004738  _Z10TIMER1_ISRv                            
+00004862  _Z10TIMER0_ISRv                            
+000047d8  _Z10TIMER1_ISRv                            
 00004400  _Z11USCI_A0_ISRv                           
-00012fc0  _Z11read_sensorv                           
+00012fcc  _Z11read_sensorv                           
 00010000  _Z11show_screenv                           
-00013510  _Z12check_buttonv                          
-00012c3c  _Z13compass_resetv                         
-00013894  _Z3cosi                                    
-0001334a  _Z3sini                                    
-00013604  _Z4atanl                                   
-0001210e  _Z4initv                                   
-00011c1a  _Z5spliti                                  
-000138c8  _Z8sendDataPc                              
-00004686  _Z9PORT1_ISRv                              
-000115d2  _Z9calibratev                              
-00013562  _ZN10FXOS8700CQ11readMagDataEv             
-000139c6  _ZN10FXOS8700CQ12reset_offsetEv            
-000134ba  _ZN10FXOS8700CQ13readAccelDataEv           
-000133aa  _ZN10FXOS8700CQ4initEv                     
-000139e6  _ZN10FXOS8700CQ6activeEv                   
-000135b4  _ZN10FXOS8700CQ7readRegEh                  
-00013a06  _ZN10FXOS8700CQ7standbyEv                  
-000132e6  _ZN10FXOS8700CQ8readRegsEhhPh              
-000137f2  _ZN10FXOS8700CQ8writeRegEhh                
-00013280  _ZN10FXOS8700CQC1Ehhh                      
-00013280  _ZN10FXOS8700CQC2Ehhh                      
-000128a2  _ZN16Adafruit_SSD130610drawCircleEiiij     
-00012f14  _ZN16Adafruit_SSD130610writeGiantEPc       
-00012dac  _ZN16Adafruit_SSD130611drawBigCharEiihjj   
-00013b62  _ZN16Adafruit_SSD130611getRotationEv       
-00013b22  _ZN16Adafruit_SSD130611setTextSizeEh       
-00013a9c  _ZN16Adafruit_SSD130612clearDisplayEv      
-00012324  _ZN16Adafruit_SSD130612fillTriangleEiiiiiij
-00013b2e  _ZN16Adafruit_SSD130612setTextColorEj      
-00013a66  _ZN16Adafruit_SSD130613drawFastHLineEiiij  
-00013a26  _ZN16Adafruit_SSD130613drawFastVLineEiiij  
-00012b7a  _ZN16Adafruit_SSD130613drawGiantCharEiihjj 
-00013782  _ZN16Adafruit_SSD130615ssd1306_commandEh   
-000124e6  _ZN16Adafruit_SSD13065beginEhh             
-00013a84  _ZN16Adafruit_SSD13065sleepEh              
-00013b68  _ZN16Adafruit_SSD13065widthEv              
-00012e60  _ZN16Adafruit_SSD13065writeEPc             
-00013b6e  _ZN16Adafruit_SSD13066heightEv             
-000130cc  _ZN16Adafruit_SSD13067displayEv            
-0001264c  _ZN16Adafruit_SSD13068drawCharEiihjjh      
-00012cf4  _ZN16Adafruit_SSD13068drawLineEiiiij       
-000137ba  _ZN16Adafruit_SSD13068fillRectEiiiij       
-0001192e  _ZN16Adafruit_SSD13068writeBigEPc          
-00012ab0  _ZN16Adafruit_SSD13069drawPixelEiij        
-00013b3a  _ZN16Adafruit_SSD13069setCursorEii         
-00013828  _ZN16Adafruit_SSD1306C1Eii                 
-00013828  _ZN16Adafruit_SSD1306C2Eii                 
-0001313e  _ZN6MS580310ms5803CRC4EPj                  
-00011ef0  _ZN6MS580310readSensorEv                   
-0001385e  _ZN6MS580311resetSensorEv                  
-0001277e  _ZN6MS580312ms5803CmdAdcEh                 
-000129b0  _ZN6MS580314adjustAltitudeEl               
-00013650  _ZN6MS580316initializeSensorEv             
-00013054  _ZN6MS580321ms5803ReadCoefficientEh        
-00013b44  _ZN6MS5803C1Ev                             
-00013b44  _ZN6MS5803C2Ev                             
+0001351c  _Z12check_buttonv                          
+00012c48  _Z13compass_resetv                         
+000138a0  _Z3cosi                                    
+00013356  _Z3sini                                    
+00013610  _Z4atanl                                   
+0001211a  _Z4initv                                   
+00011c26  _Z5spliti                                  
+000138d4  _Z8sendDataPc                              
+00004726  _Z9PORT1_ISRv                              
+000115de  _Z9calibratev                              
+0001356e  _ZN10FXOS8700CQ11readMagDataEv             
+000139d2  _ZN10FXOS8700CQ12reset_offsetEv            
+000134c6  _ZN10FXOS8700CQ13readAccelDataEv           
+000133b6  _ZN10FXOS8700CQ4initEv                     
+000139f2  _ZN10FXOS8700CQ6activeEv                   
+000135c0  _ZN10FXOS8700CQ7readRegEh                  
+00013a12  _ZN10FXOS8700CQ7standbyEv                  
+000132f2  _ZN10FXOS8700CQ8readRegsEhhPh              
+000137fe  _ZN10FXOS8700CQ8writeRegEhh                
+0001328c  _ZN10FXOS8700CQC1Ehhh                      
+0001328c  _ZN10FXOS8700CQC2Ehhh                      
+000128ae  _ZN16Adafruit_SSD130610drawCircleEiiij     
+00012f20  _ZN16Adafruit_SSD130610writeGiantEPc       
+00012db8  _ZN16Adafruit_SSD130611drawBigCharEiihjj   
+00013b6e  _ZN16Adafruit_SSD130611getRotationEv       
+00013b2e  _ZN16Adafruit_SSD130611setTextSizeEh       
+00013aa8  _ZN16Adafruit_SSD130612clearDisplayEv      
+00012330  _ZN16Adafruit_SSD130612fillTriangleEiiiiiij
+00013b3a  _ZN16Adafruit_SSD130612setTextColorEj      
+00013a72  _ZN16Adafruit_SSD130613drawFastHLineEiiij  
+00013a32  _ZN16Adafruit_SSD130613drawFastVLineEiiij  
+00012b86  _ZN16Adafruit_SSD130613drawGiantCharEiihjj 
+0001378e  _ZN16Adafruit_SSD130615ssd1306_commandEh   
+000124f2  _ZN16Adafruit_SSD13065beginEhh             
+00013a90  _ZN16Adafruit_SSD13065sleepEh              
+00013b74  _ZN16Adafruit_SSD13065widthEv              
+00012e6c  _ZN16Adafruit_SSD13065writeEPc             
+00013b7a  _ZN16Adafruit_SSD13066heightEv             
+000130d8  _ZN16Adafruit_SSD13067displayEv            
+00012658  _ZN16Adafruit_SSD13068drawCharEiihjjh      
+00012d00  _ZN16Adafruit_SSD13068drawLineEiiiij       
+000137c6  _ZN16Adafruit_SSD13068fillRectEiiiij       
+0001193a  _ZN16Adafruit_SSD13068writeBigEPc          
+00012abc  _ZN16Adafruit_SSD13069drawPixelEiij        
+00013b46  _ZN16Adafruit_SSD13069setCursorEii         
+00013834  _ZN16Adafruit_SSD1306C1Eii                 
+00013834  _ZN16Adafruit_SSD1306C2Eii                 
+0001314a  _ZN6MS580310ms5803CRC4EPj                  
+00011efc  _ZN6MS580310readSensorEv                   
+0001386a  _ZN6MS580311resetSensorEv                  
+0001278a  _ZN6MS580312ms5803CmdAdcEh                 
+000129bc  _ZN6MS580314adjustAltitudeEl               
+0001365c  _ZN6MS580316initializeSensorEv             
+00013060  _ZN6MS580321ms5803ReadCoefficientEh        
+00013b50  _ZN6MS5803C1Ev                             
+00013b50  _ZN6MS5803C2Ev                             
 00002400  __STACK_END                                
 000000a0  __STACK_SIZE                               
-00005762  __TI_CINIT_Base                            
-00005772  __TI_CINIT_Limit                           
-00005746  __TI_Handler_Table_Base                    
-00005752  __TI_Handler_Table_Limit                   
-000047d6  __TI_INITARRAY_Base                        
-000047da  __TI_INITARRAY_Limit                       
-000047d0  __TI_ISR_TRAP                              
-00013af2  __TI_decompress_none                       
-00013b74  __TI_decompress_rle24                      
+00005802  __TI_CINIT_Base                            
+00005812  __TI_CINIT_Limit                           
+000057e6  __TI_Handler_Table_Base                    
+000057f2  __TI_Handler_Table_Limit                   
+00004876  __TI_INITARRAY_Base                        
+0000487a  __TI_INITARRAY_Limit                       
+00004870  __TI_ISR_TRAP                              
+00013afe  __TI_decompress_none                       
+00013b80  __TI_decompress_rle24                      
 0000ffce  __TI_int31                                 
 0000ffd0  __TI_int32                                 
 0000ffd2  __TI_int33                                 
@@ -1272,49 +1273,49 @@ address   name
 0000fff8  __TI_int52                                 
 0000fffa  __TI_int53                                 
 0000fffc  __TI_int54                                 
-00013980  __TI_zero_init                             
+0001398c  __TI_zero_init                             
 ffffffff  __binit__                                  
 ffffffff  __c_args__                                 
-0001392a  __mspabi_divi                              
-00013690  __mspabi_divli                             
-00013ab2  __mspabi_divu                              
-00013462  __mspabi_divul                             
-00011238  __mspabi_divull                            
-00013ac8  __mspabi_mpyi_f5hw                         
-000139a4  __mspabi_mpyl_f5hw                         
-00013408  __mspabi_mpyll_f5hw                        
-00013956  __mspabi_mpysll_f5hw                       
-0001392a  __mspabi_remi                              
-00013690  __mspabi_remli                             
-00013ab2  __mspabi_remu                              
-00013462  __mspabi_remul                             
-00013b58  __mspabi_slli                              
-00013708  __mspabi_slll_1                            
-000136e4  __mspabi_slll_10                           
-000136e0  __mspabi_slll_11                           
-000136dc  __mspabi_slll_12                           
-000136d8  __mspabi_slll_13                           
-000136d4  __mspabi_slll_14                           
-000136d0  __mspabi_slll_15                           
-00013704  __mspabi_slll_2                            
-00013700  __mspabi_slll_3                            
-000136fc  __mspabi_slll_4                            
-000136f8  __mspabi_slll_5                            
-000136f4  __mspabi_slll_6                            
-000136f0  __mspabi_slll_7                            
-000136ec  __mspabi_slll_8                            
-000136e8  __mspabi_slll_9                            
-0001370e  __mspabi_sllll                             
-00013b04  __mspabi_srll                              
-00013748  __mspabi_srlll                             
-000138fc  __sti___8_main_cpp_display                 
-000131ac  _auto_init_hold_wdt                        
-000047a8  _c_int00_noargs_noexit                     
+00013936  __mspabi_divi                              
+0001369c  __mspabi_divli                             
+00013abe  __mspabi_divu                              
+0001346e  __mspabi_divul                             
+00011244  __mspabi_divull                            
+00013ad4  __mspabi_mpyi_f5hw                         
+000139b0  __mspabi_mpyl_f5hw                         
+00013414  __mspabi_mpyll_f5hw                        
+00013962  __mspabi_mpysll_f5hw                       
+00013936  __mspabi_remi                              
+0001369c  __mspabi_remli                             
+00013abe  __mspabi_remu                              
+0001346e  __mspabi_remul                             
+00013b64  __mspabi_slli                              
+00013714  __mspabi_slll_1                            
+000136f0  __mspabi_slll_10                           
+000136ec  __mspabi_slll_11                           
+000136e8  __mspabi_slll_12                           
+000136e4  __mspabi_slll_13                           
+000136e0  __mspabi_slll_14                           
+000136dc  __mspabi_slll_15                           
+00013710  __mspabi_slll_2                            
+0001370c  __mspabi_slll_3                            
+00013708  __mspabi_slll_4                            
+00013704  __mspabi_slll_5                            
+00013700  __mspabi_slll_6                            
+000136fc  __mspabi_slll_7                            
+000136f8  __mspabi_slll_8                            
+000136f4  __mspabi_slll_9                            
+0001371a  __mspabi_sllll                             
+00013b10  __mspabi_srll                              
+00013754  __mspabi_srlll                             
+00013908  __sti___8_main_cpp_display                 
+000131b8  _auto_init_hold_wdt                        
+00004848  _c_int00_noargs_noexit                     
 0000fffe  _reset_vector                              
 00002360  _stack                                     
-00013b7a  _system_pre_init                           
-00013b7e  abort                                      
-00013b4e  abs                                        
+00013b86  _system_pre_init                           
+00013b8a  abort                                      
+00013b5a  abs                                        
 00001c6c  altitude                                   
 00001c74  ax                                         
 00001c76  ay                                         
@@ -1337,9 +1338,9 @@ ffffffff  binit
 00004400  fram_rx_start                              
 00001c7c  i                                          
 00001c7e  line_lenght                                
-00013a46  main                                       
+00013a52  main                                       
 00001ca4  measured                                   
-00013ade  memcpy                                     
+00013aea  memcpy                                     
 00001c80  pres                                       
 00001c82  pres_max                                   
 00001c84  pres_min                                   
@@ -1350,8 +1351,8 @@ ffffffff  binit
 00001ca5  screen                                     
 00001c10  sensor                                     
 00001ca6  skip                                       
-00001cc4  str                                        
-00013b14  strlen                                     
+00001cc6  str                                        
+00013b20  strlen                                     
 00001c88  temp                                       
 00001c8a  temp_max                                   
 00001c8c  temp_min                                   
@@ -1360,6 +1361,7 @@ ffffffff  binit
 00001c90  tick                                       
 0000e405  time_format                                
 00001ca7  units                                      
+00001ca8  values_transmitted                         
 00001c92  voltage                                    
 00001c94  x                                          
 00001c96  x_offset                                   
@@ -2184,24 +2186,25 @@ address   name
 00001ca5  screen                                     
 00001ca6  skip                                       
 00001ca7  units                                      
-00001cc4  str                                        
+00001ca8  values_transmitted                         
+00001cc6  str                                        
 00002360  _stack                                     
 00002400  __STACK_END                                
 00004400  _Z11USCI_A0_ISRv                           
 00004400  fram_ipe_end                               
 00004400  fram_ipe_start                             
 00004400  fram_rx_start                              
-00004686  _Z9PORT1_ISRv                              
-00004738  _Z10TIMER1_ISRv                            
-000047a8  _c_int00_noargs_noexit                     
-000047c2  _Z10TIMER0_ISRv                            
-000047d0  __TI_ISR_TRAP                              
-000047d6  __TI_INITARRAY_Base                        
-000047da  __TI_INITARRAY_Limit                       
-00005746  __TI_Handler_Table_Base                    
-00005752  __TI_Handler_Table_Limit                   
-00005762  __TI_CINIT_Base                            
-00005772  __TI_CINIT_Limit                           
+00004726  _Z9PORT1_ISRv                              
+000047d8  _Z10TIMER1_ISRv                            
+00004848  _c_int00_noargs_noexit                     
+00004862  _Z10TIMER0_ISRv                            
+00004870  __TI_ISR_TRAP                              
+00004876  __TI_INITARRAY_Base                        
+0000487a  __TI_INITARRAY_Limit                       
+000057e6  __TI_Handler_Table_Base                    
+000057f2  __TI_Handler_Table_Limit                   
+00005802  __TI_CINIT_Base                            
+00005812  __TI_CINIT_Limit                           
 0000e400  d_counter                                  
 0000e402  display1_time                              
 0000e403  display2_time                              
@@ -2236,108 +2239,108 @@ address   name
 0000fffc  __TI_int54                                 
 0000fffe  _reset_vector                              
 00010000  _Z11show_screenv                           
-00011238  __mspabi_divull                            
-000115d2  _Z9calibratev                              
-0001192e  _ZN16Adafruit_SSD13068writeBigEPc          
-00011c1a  _Z5spliti                                  
-00011ef0  _ZN6MS580310readSensorEv                   
-0001210e  _Z4initv                                   
-00012324  _ZN16Adafruit_SSD130612fillTriangleEiiiiiij
-000124e6  _ZN16Adafruit_SSD13065beginEhh             
-0001264c  _ZN16Adafruit_SSD13068drawCharEiihjjh      
-0001277e  _ZN6MS580312ms5803CmdAdcEh                 
-000128a2  _ZN16Adafruit_SSD130610drawCircleEiiij     
-000129b0  _ZN6MS580314adjustAltitudeEl               
-00012ab0  _ZN16Adafruit_SSD13069drawPixelEiij        
-00012b7a  _ZN16Adafruit_SSD130613drawGiantCharEiihjj 
-00012c3c  _Z13compass_resetv                         
-00012cf4  _ZN16Adafruit_SSD13068drawLineEiiiij       
-00012dac  _ZN16Adafruit_SSD130611drawBigCharEiihjj   
-00012e60  _ZN16Adafruit_SSD13065writeEPc             
-00012f14  _ZN16Adafruit_SSD130610writeGiantEPc       
-00012fc0  _Z11read_sensorv                           
-00013054  _ZN6MS580321ms5803ReadCoefficientEh        
-000130cc  _ZN16Adafruit_SSD13067displayEv            
-0001313e  _ZN6MS580310ms5803CRC4EPj                  
-000131ac  _auto_init_hold_wdt                        
-00013280  _ZN10FXOS8700CQC1Ehhh                      
-00013280  _ZN10FXOS8700CQC2Ehhh                      
-000132e6  _ZN10FXOS8700CQ8readRegsEhhPh              
-0001334a  _Z3sini                                    
-000133aa  _ZN10FXOS8700CQ4initEv                     
-00013408  __mspabi_mpyll_f5hw                        
-00013462  __mspabi_divul                             
-00013462  __mspabi_remul                             
-000134ba  _ZN10FXOS8700CQ13readAccelDataEv           
-00013510  _Z12check_buttonv                          
-00013562  _ZN10FXOS8700CQ11readMagDataEv             
-000135b4  _ZN10FXOS8700CQ7readRegEh                  
-00013604  _Z4atanl                                   
-00013650  _ZN6MS580316initializeSensorEv             
-00013690  __mspabi_divli                             
-00013690  __mspabi_remli                             
-000136d0  __mspabi_slll_15                           
-000136d4  __mspabi_slll_14                           
-000136d8  __mspabi_slll_13                           
-000136dc  __mspabi_slll_12                           
-000136e0  __mspabi_slll_11                           
-000136e4  __mspabi_slll_10                           
-000136e8  __mspabi_slll_9                            
-000136ec  __mspabi_slll_8                            
-000136f0  __mspabi_slll_7                            
-000136f4  __mspabi_slll_6                            
-000136f8  __mspabi_slll_5                            
-000136fc  __mspabi_slll_4                            
-00013700  __mspabi_slll_3                            
-00013704  __mspabi_slll_2                            
-00013708  __mspabi_slll_1                            
-0001370e  __mspabi_sllll                             
-00013748  __mspabi_srlll                             
-00013782  _ZN16Adafruit_SSD130615ssd1306_commandEh   
-000137ba  _ZN16Adafruit_SSD13068fillRectEiiiij       
-000137f2  _ZN10FXOS8700CQ8writeRegEhh                
-00013828  _ZN16Adafruit_SSD1306C1Eii                 
-00013828  _ZN16Adafruit_SSD1306C2Eii                 
-0001385e  _ZN6MS580311resetSensorEv                  
-00013894  _Z3cosi                                    
-000138c8  _Z8sendDataPc                              
-000138fc  __sti___8_main_cpp_display                 
-0001392a  __mspabi_divi                              
-0001392a  __mspabi_remi                              
-00013956  __mspabi_mpysll_f5hw                       
-00013980  __TI_zero_init                             
-000139a4  __mspabi_mpyl_f5hw                         
-000139c6  _ZN10FXOS8700CQ12reset_offsetEv            
-000139e6  _ZN10FXOS8700CQ6activeEv                   
-00013a06  _ZN10FXOS8700CQ7standbyEv                  
-00013a26  _ZN16Adafruit_SSD130613drawFastVLineEiiij  
-00013a46  main                                       
-00013a66  _ZN16Adafruit_SSD130613drawFastHLineEiiij  
-00013a84  _ZN16Adafruit_SSD13065sleepEh              
-00013a9c  _ZN16Adafruit_SSD130612clearDisplayEv      
-00013ab2  __mspabi_divu                              
-00013ab2  __mspabi_remu                              
-00013ac8  __mspabi_mpyi_f5hw                         
-00013ade  memcpy                                     
-00013af2  __TI_decompress_none                       
-00013b04  __mspabi_srll                              
-00013b14  strlen                                     
-00013b22  _ZN16Adafruit_SSD130611setTextSizeEh       
-00013b2e  _ZN16Adafruit_SSD130612setTextColorEj      
-00013b3a  _ZN16Adafruit_SSD13069setCursorEii         
-00013b44  _ZN6MS5803C1Ev                             
-00013b44  _ZN6MS5803C2Ev                             
-00013b4e  abs                                        
-00013b58  __mspabi_slli                              
-00013b62  _ZN16Adafruit_SSD130611getRotationEv       
-00013b68  _ZN16Adafruit_SSD13065widthEv              
-00013b6e  _ZN16Adafruit_SSD13066heightEv             
-00013b74  __TI_decompress_rle24                      
-00013b7a  _system_pre_init                           
-00013b7e  C$$EXIT                                    
-00013b7e  abort                                      
+00011244  __mspabi_divull                            
+000115de  _Z9calibratev                              
+0001193a  _ZN16Adafruit_SSD13068writeBigEPc          
+00011c26  _Z5spliti                                  
+00011efc  _ZN6MS580310readSensorEv                   
+0001211a  _Z4initv                                   
+00012330  _ZN16Adafruit_SSD130612fillTriangleEiiiiiij
+000124f2  _ZN16Adafruit_SSD13065beginEhh             
+00012658  _ZN16Adafruit_SSD13068drawCharEiihjjh      
+0001278a  _ZN6MS580312ms5803CmdAdcEh                 
+000128ae  _ZN16Adafruit_SSD130610drawCircleEiiij     
+000129bc  _ZN6MS580314adjustAltitudeEl               
+00012abc  _ZN16Adafruit_SSD13069drawPixelEiij        
+00012b86  _ZN16Adafruit_SSD130613drawGiantCharEiihjj 
+00012c48  _Z13compass_resetv                         
+00012d00  _ZN16Adafruit_SSD13068drawLineEiiiij       
+00012db8  _ZN16Adafruit_SSD130611drawBigCharEiihjj   
+00012e6c  _ZN16Adafruit_SSD13065writeEPc             
+00012f20  _ZN16Adafruit_SSD130610writeGiantEPc       
+00012fcc  _Z11read_sensorv                           
+00013060  _ZN6MS580321ms5803ReadCoefficientEh        
+000130d8  _ZN16Adafruit_SSD13067displayEv            
+0001314a  _ZN6MS580310ms5803CRC4EPj                  
+000131b8  _auto_init_hold_wdt                        
+0001328c  _ZN10FXOS8700CQC1Ehhh                      
+0001328c  _ZN10FXOS8700CQC2Ehhh                      
+000132f2  _ZN10FXOS8700CQ8readRegsEhhPh              
+00013356  _Z3sini                                    
+000133b6  _ZN10FXOS8700CQ4initEv                     
+00013414  __mspabi_mpyll_f5hw                        
+0001346e  __mspabi_divul                             
+0001346e  __mspabi_remul                             
+000134c6  _ZN10FXOS8700CQ13readAccelDataEv           
+0001351c  _Z12check_buttonv                          
+0001356e  _ZN10FXOS8700CQ11readMagDataEv             
+000135c0  _ZN10FXOS8700CQ7readRegEh                  
+00013610  _Z4atanl                                   
+0001365c  _ZN6MS580316initializeSensorEv             
+0001369c  __mspabi_divli                             
+0001369c  __mspabi_remli                             
+000136dc  __mspabi_slll_15                           
+000136e0  __mspabi_slll_14                           
+000136e4  __mspabi_slll_13                           
+000136e8  __mspabi_slll_12                           
+000136ec  __mspabi_slll_11                           
+000136f0  __mspabi_slll_10                           
+000136f4  __mspabi_slll_9                            
+000136f8  __mspabi_slll_8                            
+000136fc  __mspabi_slll_7                            
+00013700  __mspabi_slll_6                            
+00013704  __mspabi_slll_5                            
+00013708  __mspabi_slll_4                            
+0001370c  __mspabi_slll_3                            
+00013710  __mspabi_slll_2                            
+00013714  __mspabi_slll_1                            
+0001371a  __mspabi_sllll                             
+00013754  __mspabi_srlll                             
+0001378e  _ZN16Adafruit_SSD130615ssd1306_commandEh   
+000137c6  _ZN16Adafruit_SSD13068fillRectEiiiij       
+000137fe  _ZN10FXOS8700CQ8writeRegEhh                
+00013834  _ZN16Adafruit_SSD1306C1Eii                 
+00013834  _ZN16Adafruit_SSD1306C2Eii                 
+0001386a  _ZN6MS580311resetSensorEv                  
+000138a0  _Z3cosi                                    
+000138d4  _Z8sendDataPc                              
+00013908  __sti___8_main_cpp_display                 
+00013936  __mspabi_divi                              
+00013936  __mspabi_remi                              
+00013962  __mspabi_mpysll_f5hw                       
+0001398c  __TI_zero_init                             
+000139b0  __mspabi_mpyl_f5hw                         
+000139d2  _ZN10FXOS8700CQ12reset_offsetEv            
+000139f2  _ZN10FXOS8700CQ6activeEv                   
+00013a12  _ZN10FXOS8700CQ7standbyEv                  
+00013a32  _ZN16Adafruit_SSD130613drawFastVLineEiiij  
+00013a52  main                                       
+00013a72  _ZN16Adafruit_SSD130613drawFastHLineEiiij  
+00013a90  _ZN16Adafruit_SSD13065sleepEh              
+00013aa8  _ZN16Adafruit_SSD130612clearDisplayEv      
+00013abe  __mspabi_divu                              
+00013abe  __mspabi_remu                              
+00013ad4  __mspabi_mpyi_f5hw                         
+00013aea  memcpy                                     
+00013afe  __TI_decompress_none                       
+00013b10  __mspabi_srll                              
+00013b20  strlen                                     
+00013b2e  _ZN16Adafruit_SSD130611setTextSizeEh       
+00013b3a  _ZN16Adafruit_SSD130612setTextColorEj      
+00013b46  _ZN16Adafruit_SSD13069setCursorEii         
+00013b50  _ZN6MS5803C1Ev                             
+00013b50  _ZN6MS5803C2Ev                             
+00013b5a  abs                                        
+00013b64  __mspabi_slli                              
+00013b6e  _ZN16Adafruit_SSD130611getRotationEv       
+00013b74  _ZN16Adafruit_SSD13065widthEv              
+00013b7a  _ZN16Adafruit_SSD13066heightEv             
+00013b80  __TI_decompress_rle24                      
+00013b86  _system_pre_init                           
+00013b8a  C$$EXIT                                    
+00013b8a  abort                                      
 ffffffff  __binit__                                  
 ffffffff  __c_args__                                 
 ffffffff  binit                                      
 
-[966 symbols]
+[967 symbols]
