@@ -23,22 +23,22 @@ OBJS += \
 ./main.obj 
 
 CPP_DEPS += \
-./Adafruit_SSD1306.pp \
-./FXOS8700CQ.pp \
-./MS5803.pp \
-./main.pp 
+./Adafruit_SSD1306.d \
+./FXOS8700CQ.d \
+./MS5803.d \
+./main.d 
 
 C_DEPS += \
-./glcdfont.pp 
+./glcdfont.d 
 
 CPP_DEPS__QUOTED += \
-"Adafruit_SSD1306.pp" \
-"FXOS8700CQ.pp" \
-"MS5803.pp" \
-"main.pp" 
+"Adafruit_SSD1306.d" \
+"FXOS8700CQ.d" \
+"MS5803.d" \
+"main.d" 
 
 C_DEPS__QUOTED += \
-"glcdfont.pp" 
+"glcdfont.d" 
 
 OBJS__QUOTED += \
 "Adafruit_SSD1306.obj" \

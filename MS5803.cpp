@@ -59,7 +59,7 @@ static int64_t           sensitivity              = 0;
 
 // Constructor when using i2c.
 MS5803::MS5803() {
-  ref_pres = 10133;
+  ref_pres = 101325;
 } 
 
 uint8_t MS5803::initializeSensor() {
@@ -104,17 +104,17 @@ void MS5803::readSensor() {
     sensitivity = ((uint64_t)sensorCoefficients[1] << 16) + (int32_t)((deltaTemp * (uint64_t)sensorCoefficients[3]) >> 7);
     
     // calculate 2nd order pressure and temperature (MS5803 2st order algorithm)
-    press = ((((uint64_t)(D1 * sensitivity) >> 21) - sensorOffset) >> 15)/10;
+    press = ((((uint64_t)(D1 * sensitivity) >> 21) - sensorOffset) >> 15);
     temp = (2000 + (int32_t)((deltaTemp * (uint64_t)sensorCoefficients[6] ) >> 23));
     alt = ((ref_pres - press) * (160000 + (temp * 1600) / 273)) / (ref_pres + press);
     temp = temp/10;
-    press = (press*3)/4;
+    press = (press*3)/40;
 }
 
 void MS5803::adjustAltitude(int32_t adj_ref) {
 
 	ref_pres = adj_ref;
-	press = ((((uint64_t)(D1 * sensitivity) >> 21) - sensorOffset) >> 15)/10;
+	press = ((((uint64_t)(D1 * sensitivity) >> 21) - sensorOffset) >> 15);
 	temp = (2000 + (int32_t)((deltaTemp * (uint64_t)sensorCoefficients[6] ) >> 23));
 	alt = ((ref_pres - press) * (160000 + (temp * 1600) / 273)) / (ref_pres + press);
 }
